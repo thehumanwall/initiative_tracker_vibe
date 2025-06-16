@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :scores
+  resources :scales
+  resources :comments
+  resources :metrics
+  resources :action_items
+  resources :teams
+
   resources :registrations, only: [ :new, :create ]
   resources :sessions, only: [ :new, :create, :destroy ]
   resources :passwords, param: :token

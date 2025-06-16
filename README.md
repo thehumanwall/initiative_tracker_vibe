@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+TODO: create controllers/views for all the models just created. should only be able to do most non-view actions as admin 
