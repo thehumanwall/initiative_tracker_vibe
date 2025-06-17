@@ -1,4 +1,15 @@
-<div>
-  <h1 class="font-bold text-4xl">Scales#new</h1>
-  <p>Find me in app/views/scales/new.html.erb</p>
+<div class="container mx-auto px-4 py-8">
+  <div class="max-w-2xl mx-auto">
+    <div class="mb-6">
+      <%= link_to "← Back to Scales", scales_path, class: "text-blue-600 hover:text-blue-800" %>
+    </div>
+    
+    <div class="bg-white shadow sm:rounded-lg">
+      <div class="px-4 py-5 sm:p-6">
+        <h1 class="text-xl font-medium text-gray-900 mb-6">New Scale</h1>
+        
+        <%= render "form", scale: @scale %>
+      </div>
+    </div>
+  </div>
 </div>

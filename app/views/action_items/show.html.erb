@@ -1,4 +1,69 @@
-<div>
-  <h1 class="font-bold text-4xl">ActionItems#show</h1>
-  <p>Find me in app/views/action_items/show.html.erb</p>
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+  <div class="mb-8">
+    <%= link_to action_items_path, class: "text-sm font-medium text-indigo-600 hover:text-indigo-500" do %>
+      <div class="flex items-center">
+        <svg class="h-5 w-5 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clip-rule="evenodd" />
+        </svg>
+        Back to Action Items
+      </div>
+    <% end %>
+  </div>
+
+  <% if notice.present? %>
+    <div class="rounded-md bg-green-50 p-4 mb-6">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <svg class="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="ml-3">
+          <p class="text-sm font-medium text-green-800"><%= notice %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="overflow-hidden bg-white shadow sm:rounded-lg">
+    <div class="px-4 py-6 sm:px-6">
+      <h3 class="text-xl font-bold leading-tight text-gray-900"><%= @action_item.name %></h3>
+      <p class="mt-1 max-w-2xl text-sm text-gray-500">Action item details</p>
+    </div>
+    <div class="border-t border-gray-200">
+      <dl>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Name</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= @action_item.name %></dd>
+        </div>
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Metric</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= @action_item.metric.name rescue "N/A" %></dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Status</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+            <% if @action_item.is_active %>
+              <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Active</span>
+            <% else %>
+              <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">Inactive</span>
+            <% end %>
+          </dd>
+        </div>
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Created at</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= @action_item.created_at.strftime("%B %d, %Y at %I:%M %p") %></dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Updated at</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= @action_item.updated_at.strftime("%B %d, %Y at %I:%M %p") %></dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="mt-6 flex items-center justify-end gap-x-6">
+    <%= link_to "Edit", edit_action_item_path(@action_item), class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+    <%= button_to "Delete", action_item_path(@action_item), method: :delete, class: "text-sm font-semibold leading-6 text-gray-900", data: { turbo_confirm: "Are you sure you want to delete this action item?" } %>
+  </div>
 </div>

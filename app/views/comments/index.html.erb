@@ -1,4 +1,37 @@
-<div>
-  <h1 class="font-bold text-4xl">Comments#index</h1>
-  <p>Find me in app/views/comments/index.html.erb</p>
+<div class="container mx-auto px-4 py-8">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-bold text-gray-800">Comments</h1>
+    <%= link_to "New Comment", new_comment_path, class: "bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg" %>
+  </div>
+
+  <div class="bg-white shadow overflow-hidden rounded-lg">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Value</th>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Score</th>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        <% @comments.each do |comment| %>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"><%= truncate(comment.value, length: 50) %></td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Score #<%= comment.score_id %></td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+              <%= comment.user.email_address rescue "Unknown User" %>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+              <div class="flex space-x-2">
+                <%= link_to "View", comment, class: "text-blue-600 hover:text-blue-900" %>
+                <%= link_to "Edit", edit_comment_path(comment), class: "text-indigo-600 hover:text-indigo-900" %>
+                <%= button_to "Delete", comment, method: :delete, form: { data: { turbo_confirm: "Are you sure?" } }, class: "text-red-600 hover:text-red-900" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

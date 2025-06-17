@@ -1,4 +1,42 @@
-<div>
-  <h1 class="font-bold text-4xl">Scales#show</h1>
-  <p>Find me in app/views/scales/show.html.erb</p>
+<div class="container mx-auto px-4 py-8">
+  <div class="max-w-2xl mx-auto">
+    <div class="mb-6">
+      <%= link_to "← Back to Scales", scales_path, class: "text-blue-600 hover:text-blue-800" %>
+    </div>
+    
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+      <div class="px-4 py-5 sm:px-6">
+        <h1 class="text-xl font-medium text-gray-900">Scale Details</h1>
+      </div>
+      
+      <div class="border-t border-gray-200">
+        <dl>
+          <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium text-gray-500">Name</dt>
+            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2"><%= @scale.name %></dd>
+          </div>
+          
+          <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium text-gray-500">Value</dt>
+            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2"><%= @scale.value %></dd>
+          </div>
+          
+          <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium text-gray-500">Description</dt>
+            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2"><%= @scale.description %></dd>
+          </div>
+          
+          <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium text-gray-500">Created At</dt>
+            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2"><%= @scale.created_at.strftime("%B %d, %Y at %I:%M %p") %></dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="mt-6 flex space-x-3">
+      <%= link_to "Edit", edit_scale_path(@scale), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none" %>
+      <%= button_to "Delete", @scale, method: :delete, form: { data: { turbo_confirm: "Are you sure?" } }, class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none" %>
+    </div>
+  </div>
 </div>

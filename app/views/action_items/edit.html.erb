@@ -1,4 +1,25 @@
-<div>
-  <h1 class="font-bold text-4xl">ActionItems#edit</h1>
-  <p>Find me in app/views/action_items/edit.html.erb</p>
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+  <div class="mb-8">
+    <%= link_to action_item_path(@action_item), class: "text-sm font-medium text-indigo-600 hover:text-indigo-500" do %>
+      <div class="flex items-center">
+        <svg class="h-5 w-5 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clip-rule="evenodd" />
+        </svg>
+        Back to Action Item
+      </div>
+    <% end %>
+  </div>
+
+  <div class="md:grid md:grid-cols-3 md:gap-6">
+    <div class="md:col-span-1">
+      <div class="px-4 sm:px-0">
+        <h3 class="text-lg font-medium leading-6 text-gray-900">Edit Action Item</h3>
+        <p class="mt-1 text-sm text-gray-600">Update the information for this action item.</p>
+      </div>
+    </div>
+    
+    <div class="mt-5 md:col-span-2 md:mt-0">
+      <%= render "form", action_item: @action_item %>
+    </div>
+  </div>
 </div>
