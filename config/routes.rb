@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_settings
   resources :scores
   resources :scales
   resources :comments

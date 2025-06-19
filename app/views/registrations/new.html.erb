@@ -4,7 +4,7 @@
   </div>
 
   <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-    <%= form_with(model: @user, url: new_registration_path, class: "space-y-6") do |form| %>
+    <%= form_with(model: @user, url: registrations_path, class: "space-y-6") do |form| %>
       <% if @user.errors.any? %>
         <div class="bg-red-50 p-4 rounded-md border border-red-300 mb-4">
           <ul>
